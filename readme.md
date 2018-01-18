@@ -5,5 +5,5 @@ BSim java library is needed to run the simulation.
 
 ## Structure
 * Examples folder contains generated csv files and parameter descriptions.
-* Report files folder contains the final report.
+* Report files folder contains the final report pdf and its latex source.
 * SynchronousFlipFlop contains code.

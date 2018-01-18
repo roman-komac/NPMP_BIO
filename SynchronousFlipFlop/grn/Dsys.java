@@ -36,15 +36,19 @@ public class Dsys implements BSimOdeSystem {
 
 
         //a
-        dy[0] =  t * a1 * unitStep(D - Kd1) * unitStep(Kd2 - CLK) + t * a2 * unitStep(Kd3 - y[1]) - t * dt1 * y[0];
+        dy[0] =  a1 * unitStep(D - Kd1) * unitStep(Kd2 - CLK) + a2 * unitStep(Kd3 - y[1]) - dt1 * y[0];
         //ac
-        dy[1] =  t * a1 * unitStep(Kd1 - D) * unitStep(Kd2 - CLK) + t * a2 * unitStep(Kd3 - y[0]) - t * dt1 * y[1];
+        dy[1] =  a1 * unitStep(Kd1 - D) * unitStep(Kd2 - CLK) + a2 * unitStep(Kd3 - y[0]) - dt1 * y[1];
 
         //q
-        dy[2] =  t * a3 * unitStep(y[0] - Kd4) * unitStep(CLK - Kd5) * unitStep(Kd7 - y[2]) + t * a4 * unitStep(Kd6 - y[3]) * unitStep(Kd7 - y[2]) - t * dt2 * y[2];
+        dy[2] =  a3 * unitStep(y[0] - Kd4) * unitStep(CLK - Kd5) * unitStep(Kd7 - y[2]) + a4 * unitStep(Kd6 - y[3]) * unitStep(Kd7 - y[2]) - dt2 * y[2];
         //qc
-        dy[3] =  t * a3 * unitStep(y[1] - Kd4) * unitStep(CLK - Kd5) * unitStep(Kd7 - y[3]) + t * a4 * unitStep(Kd6 - y[2]) * unitStep(Kd7 - y[3]) - t * dt2 * y[3];
+        dy[3] =  a3 * unitStep(y[1] - Kd4) * unitStep(CLK - Kd5) * unitStep(Kd7 - y[3]) + a4 * unitStep(Kd6 - y[2]) * unitStep(Kd7 - y[3]) - dt2 * y[3];
 
+		dy[0] *= t;
+		dy[1] *= t;
+		dy[2] *= t;
+		dy[3] *= t;
 
         return dy;
     }
